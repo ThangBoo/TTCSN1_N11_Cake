@@ -11,15 +11,14 @@
         <link rel="stylesheet" href="../css/style.css" />
     </head>
     <body>
-        <?php
-
-    $sql_category1="SELECT * FROM category WHERE id<13";
-    $query_category1=mysqli_query($conn,$sql_category1);   
-    $sql_category2="SELECT * FROM category WHERE id>12";
-        $query_category2=mysqli_query($conn,$sql_category2); $id =
-        $_SESSION['user']; $sql_info = "SELECT * FROM user WHERE id='$id' LIMIT
-        1"; $query_info = mysqli_query($conn, $sql_info); $info =
-        mysqli_fetch_array($query_info); ?>
+    <?php
+        $sql_category1="SELECT * FROM category WHERE id<13";
+        $query_category1=mysqli_query($conn,$sql_category1);   
+        $sql_category2="SELECT * FROM category WHERE id>12";
+        $query_category2=mysqli_query($conn,$sql_category2); 
+        $id = $_SESSION['user']; $sql_info = "SELECT * FROM user WHERE id='$id' LIMIT 1"; $query_info = mysqli_query($conn, $sql_info); 
+        $info = mysqli_fetch_array($query_info); 
+    ?>
 
         <div class="header flex w-full">
             <div class="h-[70px] flex justify-between px-6 header__inner">
@@ -38,41 +37,35 @@
                             <a href="index.php?page=about">VỀ THE CAKE HOUSE</a>
                         </li>
                         <li class="p-[23px] cursor-pointer">
-                            <a href="index.php?page=category&id=10"
-                                >BÁNH SINH NHẬT <i class="fa fa-caret-down"></i
-                            ></a>
+                            <a href="index.php?page=category&id=10">BÁNH SINH NHẬT <i class="fa fa-caret-down"></i></a>
                             <ul class="sub__menu list-none shadow-lg">
                                 <?php
-                while ($row_category1 = mysqli_fetch_array($query_category1)) {
-              ?>
+                                    while ($row_category1 = mysqli_fetch_array($query_category1)) {
+                                ?>
                                 <li>
-                                    <a
-                                        href="index.php?page=category&id=<?php echo $row_category1['id'] ?>"
-                                        ><?php echo $row_category1['name']?></a
-                                    >
+                                    <a href="index.php?page=category&id=<?php echo $row_category1['id'] ?>">
+                                        <?php echo $row_category1['name'] ?> 
+                                    </a>
                                 </li>
                                 <?php  
-                }
-              ?>
+                                    }
+                                ?>
                             </ul>
                         </li>
                         <li class="p-[23px] cursor-pointer">
-                            <a href="index.php?page=category&id=13"
-                                >SẢN PHẨM KHÁC <i class="fa fa-caret-down"></i
-                            ></a>
+                            <a href="index.php?page=category&id=13">SẢN PHẨM KHÁC <i class="fa fa-caret-down"></i></a>
                             <ul class="sub__menu list-none shadow-lg">
                                 <?php
-                while ($row_category2 = mysqli_fetch_array($query_category2)) {
-              ?>
+                                    while ($row_category2 = mysqli_fetch_array($query_category2)) {
+                                ?>
                                 <li>
-                                    <a
-                                        href="index.php?page=category&id=<?php echo $row_category2['id'] ?>"
-                                        ><?php echo $row_category2['name']?></a
-                                    >
+                                    <a href="index.php?page=category&id=<?php echo $row_category2['id'] ?>">
+                                        <?php echo $row_category2['name']?>
+                                    </a>
                                 </li>
                                 <?php  
-                }
-              ?>
+                                    }
+                                ?>
                             </ul>
                         </li>
                         <li class="p-[23px] cursor-pointer">
@@ -81,20 +74,8 @@
                     </ul>
                     <!-- tìm kiếm -->
                     <div class="flex p-[23px]">
-                        <form
-                            autocomplete="off"
-                            action="index.php?"
-                            id="search_form"
-                            method="get"
-                        >
-                            <input
-                                class="border-solid border-2 border-red-400 rounded-2xl indent-4"
-                                type="text"
-                                name="search_key"
-                                onfocus=""
-                                id="search"
-                                placeholder="Tìm kiếm..."
-                            />
+                        <form autocomplete="off" action="index.php?" id="search_form" method="get">
+                            <input class="border-solid border-2 border-red-400 rounded-2xl indent-4" type="text" name="search_key" onfocus="" id="search" placeholder="Tìm kiếm..." />
                         </form>
                     </div>
                 </div>
@@ -106,45 +87,23 @@
                         </a>
                     </div>
                     <!-- menu user -->
-                    <div
-                        onclick="show_menu()"
-                        class="menu__user w-[100px] flex justify-end cursor-pointer"
-                    >
+                    <div onclick="show_menu()" class="menu__user w-[100px] flex justify-end cursor-pointer">
                         <div class="flex justify-center">
-                            <img
-                                src="./images/<?php echo $info['avatar']?>"
-                                alt="Avatar"
-                                class="avatar"
-                            />
-                            <i
-                                class="fa-solid fa-caret-down px-[8px] py-[16px]"
-                            ></i>
+                            <img src="./images/<?php echo $info['avatar']?>" alt="Avatar" class="avatar"/>
+                            <i class="fa-solid fa-caret-down px-[8px] py-[16px]"></i>
                         </div>
-                        <ul
-                            id="submenu_user"
-                            class="submenu__user list-none shadow-lg w-[200px] top-[60px] rounded-b-md"
-                        >
+                        <ul id="submenu_user" class="submenu__user list-none shadow-lg w-[200px] top-[60px] rounded-b-md">
                             <li>
-                                <a
-                                    href="index.php?page=user-info&id=<?php echo $id ?>"
-                                    ><i class="fa-regular fa-address-book"></i>
-                                    Thông tin cá nhân</a
-                                >
+                                <a href="index.php?page=user-info&id=<?php echo $id ?>" ><i class="fa-regular fa-address-book"></i> Thông tin cá nhân </a>
                             </li>
                             <li>
-                                <a
-                                    href="index.php?page=user-account&id=<?php echo $id ?>"
-                                    ><i class="fa-solid fa-shield-halved"></i>
-                                    Tài khoản & bảo mật</a
-                                >
+                                <a href="index.php?page=user-account&id=<?php echo $id ?>" ><i class="fa-solid fa-shield-halved"></i> Tài khoản & bảo mật </a>
                             </li>
                             <li>
-                                <a href="./pages/account/logout.php"
-                                    ><i
-                                        class="fa-solid fa-arrow-right-from-bracket"
-                                    ></i>
-                                    Đăng xuất</a
-                                >
+                                <a href="./pages/account/logout.php">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    Đăng xuất
+                                </a>
                             </li>
                         </ul>
                     </div>
