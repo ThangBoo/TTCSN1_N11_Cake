@@ -9,6 +9,6 @@
 	
 	// Check connection
 	if ($conn->connect_errno) {
-        echo "Lỗi kết nối: ".$conn->connect_error;
-        exit();
+	  echo "Lỗi kết nối: ".$conn->connect_error;
+	  exit();
 	}
