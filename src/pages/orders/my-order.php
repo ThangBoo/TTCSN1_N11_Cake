@@ -122,11 +122,11 @@
 
                 while ($row = mysqli_fetch_array($query_orders)) {
                     $statusClass = '';
-                    if ($row['status'] === 'Pending') {
+                    if ($row['status'] === 'Chờ xác nhận') {
                         $statusClass = 'status-pending';
-                    } elseif ($row['status'] === 'In Progress') {
+                    } elseif ($row['status'] === 'Đang giao') {
                         $statusClass = 'status-inprogress';
-                    } elseif ($row['status'] === 'Delivered') {
+                    } elseif ($row['status'] === 'Đã giao') {
                         $statusClass = 'status-delivered';
                     }
                     ?>
@@ -140,17 +140,17 @@
                         <td>
                             <?php if ($roleId == 1) { // Admin ?>
                                 <select onchange="updateStatus(<?php echo $row['id']; ?>, this)">
-                                    <option value="Pending" <?php if ($row['status'] == 'Pending')
-                                        echo 'selected'; ?>>Pending
+                                    <option value="Pending" <?php if ($row['status'] == 'Chờ xác nhận')
+                                        echo 'selected'; ?>>Chờ xác nhận
                                     </option>
-                                    <option value="In Progress" <?php if ($row['status'] == 'In Progress')
-                                        echo 'selected'; ?>>In
-                                        Progress</option>
-                                    <option value="Delivered" <?php if ($row['status'] == 'Delivered')
+                                    <option value="In Progress" <?php if ($row['status'] == 'Đang giao')
+                                        echo 'selected'; ?>>Đang giao</option>
+                                    <option value="Delivered" <?php if ($row['status'] == 'Đã giao')
                                         echo 'selected'; ?>>
-                                        Delivered</option>
+                                        Đã giao</option>
                                 </select>
-                            <?php } else { // User ?>
+                            <?php } 
+                            else { // User ?>
                                 <span class="status <?php echo $statusClass; ?>">
                                     <?php echo htmlspecialchars($row['status']); ?>
                                 </span>

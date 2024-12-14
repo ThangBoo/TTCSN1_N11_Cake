@@ -57,7 +57,7 @@
       $query_count = mysqli_query($conn, "SELECT * FROM product");
     }
     else {
-      $sql_pro = "SELECT * FROM product JOIN category ON product.category_id = category.id WHERE title LIKE '%".$search_key."%' OR name LIKE '%".$search_key."%' LIMIT 16 OFFSET $begin";
+      $sql_pro = "SELECT product.id, product.category_id, thumbnail, price, title FROM product JOIN category ON product.category_id = category.id WHERE title LIKE '%".$search_key."%' OR name LIKE '%".$search_key."%' LIMIT 16 OFFSET $begin";
       $query_pro = mysqli_query($conn, $sql_pro);
       $query_count = mysqli_query($conn, "SELECT * FROM product JOIN category ON product.category_id = category.id WHERE title LIKE '%".$search_key."%' OR name LIKE '%".$search_key."%' ");
     }
@@ -97,7 +97,7 @@
               while ($row_pro = mysqli_fetch_array($query_pro)) {
             ?>
               <li class="w-[240px]">
-                <a href="index.php?page=product&id=<?php echo $row_pro['id']?>">
+                <a href="index.php?page=product&id=<?php echo $row_pro['id']?>&search_key=<?php echo $search_key ?>">
                   <div class="text-center mb-[30px]">
                     <img class="w-[240px] h-[240px]" src="<?php echo $row_pro['thumbnail']?>" alt="image">
                     <p class="uppercase font-semibold min-h-[50px] my-2"><?php echo $row_pro['title']?></p>
