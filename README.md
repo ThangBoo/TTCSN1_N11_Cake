@@ -5,9 +5,9 @@ Front-end Source Code
 ## Project Setup
 
 ```sh
-git clone https://github.com/Cake-House/php-n9-cakehouse.git
+git clone https://github.com/ThangBoo/TTCSN1_N11_Cake.git
 
-cd php-n9-cakehouse
+cd TTCSN1_N11_Cake
 ```
 
 ## Thành viên nhóm
